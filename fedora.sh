@@ -99,7 +99,7 @@ prindt "[dnf] Installing node.js v16"
 #Install ocs-url
 printdt "[dnf] Install ocs-url"
 	dnf install -y qt5-qtbase qt5-qtbase-gui qt5-qtsvg qt5-qtdeclarative qt5-qtquickcontrols
-	dnf install -y https://cdn.jyles.club/upload/ocs-url-3.1.0-1.fc20.x86_64.rpm
+	dnf install -y https://cdn.jyles.club/upload/ocs-url-3.1.0-1.rpm
 
 #Install Tools
 printdt "[dnf] Installing misc stuff"
@@ -130,8 +130,8 @@ printdt "[dnf] Installing misc stuff"
 		flatpak \
 		zsh \
 		cargo \
-		gnome-font-viewer
-
+		gnome-font-viewer \
+		lightdm-gtk-greeter-settings
 
 go install github.com/nektos/act@latest
 
@@ -150,8 +150,6 @@ printdt "[snap] Installing packages"
 		slack \
 		discord \
 		code
-		
-	ln -s /snap
 		
 printdt "[flatpak] Installing packages"
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
