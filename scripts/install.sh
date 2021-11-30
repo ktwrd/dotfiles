@@ -18,7 +18,7 @@ for pkg in "$@"
 do
 	case $pkg in
 		cuda)
-			switch $PKMAN in
+			case $PKMAN in
 				dnf)
 					dnf clean all
 					dnf -y module install nvidia-driver:latest-dkms
@@ -30,6 +30,8 @@ do
 					add-apt-repository contrib
 					apt-get update
 				;;
+			esac
+	esac
 done
 
 case $PKMAN in
