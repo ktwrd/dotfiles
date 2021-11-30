@@ -14,7 +14,7 @@ do
     fi
 done
 
-for pkg in $@
+for pkg in "$@"
 do
 	case $pkg in
 		cuda)
