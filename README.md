@@ -18,6 +18,7 @@ Required Packages;
 - lightdm
 
 ## Credits
+![](screenshot.png)
 - [LightDM Theme](https://www.xfce-look.org/p/1305045)
 - [XFCE4 Theme](https://www.xfce-look.org/p/1305045)
 - [Icons (Haiku}](https://www.xfce-look.org/p/1012423)
