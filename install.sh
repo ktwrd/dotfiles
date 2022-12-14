@@ -26,7 +26,6 @@ _getpkman() {
 			return $osInfo[$f]
 		fi
 	done
-
 }
 
 _isroot() {
@@ -41,6 +40,7 @@ _isroot() {
 _install_dnf() {
 	dnf install -y \
 		python3 \
+		python3-pip \
 		wget \
 		curl \
 		git
@@ -49,6 +49,7 @@ _install_apt() {
 	apt update
 	apt install -y \
 		python3 \
+		python3-pip \
 		wget \
 		curl \
 		git
@@ -79,7 +80,7 @@ wget https://bootstrap.pypa.io/get-pip.py
 /usr/bin/python3 get-pip.py
 rm -rf get-pip.py
 
-wget https://github.com/jylescoad-ward/dotfiles/raw/main/install.py
+wget https://github.com/ktwrd/dotfiles/raw/main/install.py
 /usr/bin/python3 install.py $PACKAGEMAN $(whoami) $TIMESTAMP $DISTRO $DISTROVERSION | tee install.$TIMESTAMP.log
 rm installer.py
 

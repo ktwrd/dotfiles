@@ -25,7 +25,8 @@ alias apt-get="sudo apt-get"
 alias dnf="sudo dnf"
 alias yum="sudo yum"
 alias systemctl="/usr/bin/sudo /usr/bin/systemctl"
-alias transfetch="neofetch ~/.local/share/neofetch/transflag --ascii_colors 4 5 15"
+alias transfetch="neofetch --source ~/.local/share/neofetch/transflag --ascii_colors 4 5 15"
+alias badfetch="neofetch --source ~/.local/share/neofetch/bad-dragon"
 
 function dirsize()
 {

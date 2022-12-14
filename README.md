@@ -4,7 +4,7 @@ Supported Package Managers;
 - apt
 - zypper
 ```bash
-$ sudo bash <(wget -qO- https://github.com/jylescoad-ward/dotfiles/raw/main/install.sh)
+$ sudo bash <(wget -qO- https://github.com/ktwrd/dotfiles/raw/main/install.sh)
 ```
 
 For optional sections (e.g, [[Customization]]), packages that are installed by the auto-install script are in bold.

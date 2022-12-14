@@ -321,7 +321,7 @@ def _install_ohmyzsh():
         "--unattended"
     ])
 def _install_theme():
-    subprocess.run("git clone https://github.com/jylescoad-ward/dotfiles")
+    subprocess.run("git clone https://github.com/ktwrd/dotfiles")
     subprocess.run("cp --force -Rv dotfiles/linux/* /")
     subprocess.run("xfce4-panel-profiles load dotfiles/xfce4/panelprofile.tar.bz2")
     subprocess.run("xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual-1/workspace0/last-image --set /usr/share/backgrounds/desktop-custom/png")
