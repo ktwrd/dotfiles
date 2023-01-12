@@ -1,0 +1,34 @@
+# Alias stuff
+function please()
+{
+    sudo $@
+}
+
+if [ -f "micro" ]; then
+    alias edit="micro"
+elif [ -f "nano" ]; then
+    alias edit="nano"
+elif [ -f "vim" ]; then
+    alias edit="vim"
+elif [ -f "vi" ]; then
+    alias edit="vi"
+else
+    edit ()
+    {
+        echo "No preferred editor found ;w;"
+        echo "Preferred editors;"
+        echo "micro, nano, vim, vi"
+    }
+fi
+alias apt="sudo apt"
+alias apt-get="sudo apt-get"
+alias dnf="sudo dnf"
+alias yum="sudo yum"
+alias systemctl="/usr/bin/sudo /usr/bin/systemctl"
+alias transfetch="neofetch --source ~/.local/share/neofetch/transflag --ascii_colors 4 5 15"
+alias badfetch="neofetch --source ~/.local/share/neofetch/bad-dragon"
+
+function dirsize()
+{
+    du -hc --max-depth=1 $@
+}
