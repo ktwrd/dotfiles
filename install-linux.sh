@@ -49,7 +49,8 @@ _install_apt() {
         git \
         zsh \
         nano \
-        flatpak
+        flatpak \
+		imwheel
 	sudo apt install -y \
 		libqt5svg5 \
 		qml-module-qtquick-controls
@@ -121,5 +122,5 @@ then
 fi
 
 echo Copying Home Folder
-find ./linux/user_home_folder/ -maxdepth 1 -regex '^\./.*' -exec /usr/bin/cp -rf {} ~/ \;
+find ./linux/user_home_folder/ -type d -maxdepth 1 -regex '^\..*' -exec cp -rvf {} ~/ \;
 echo "Run \"source ~/.zshrc\" to load"
