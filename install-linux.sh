@@ -172,7 +172,6 @@ _install_flatpak() {
         com.dec05eba.gpu_screen_recorder \
         com.discordapp.Discord \
         com.github.LongSoft.UEFITool \
-        com.visualstudio.code \
         com.vysp3r.ProtonPlus \
         com.whitemagicsoftware.kmcaster \
         com.yubico.yubioath \
