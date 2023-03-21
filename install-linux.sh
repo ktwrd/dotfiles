@@ -41,7 +41,11 @@ _install_homedir() {
 }
 #----------------------------------------------------------------
 # Installer
-# | DNF
+# | Dnf
+#   |- _install_dnf_powershell
+#   |- _install_dnf_ocs
+#   |- _install_dnf_dotnet
+#   |- _install_dnf_vscode
 #----------------------------------------------------------------
 _install_dnf() {
     sudo dnf install -y \
@@ -55,7 +59,10 @@ _install_dnf() {
         flatpak \
         neofetch \
         konsole
+    _install_dnf_powershell;
     _install_dnf_ocs;
+    _install_dnf_dotnet;
+    _install_dnf_vscode;
     _printheader "Done: _install_dnf"
 }
 _install_dnf_ocs() {
@@ -67,9 +74,44 @@ _install_dnf_ocs() {
     rm ocs-url-3.1.0-1.x86_64.rpm
     _printheader "Done: _install_dnf_ocs"
 }
+_install_dnf_powershell()
+{
+    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+    curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/microsoft.repo
+    sudo dnf install powershell -y
+}
+_install_dnf_dotnet()
+{
+    # import keys
+    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+    # add repo
+    FEDORA_VERSION=$(rpm -E %fedora)
+    sudo wget -O /etc/yum.repos.d/microsoft-prod.repo https://packages.microsoft.com/config/fedora/$FEDORA_VERSION/prod.repo
+
+    # install dotnet
+    sudo dnf install -y \
+        dotnet-sdk-7.0 \
+        dotnet-sdk-6.0 \
+        aspnetcore-runtime-7.0 \
+        aspnetcore-runtime-6.0 \
+        dotnet-runtime-7.0 \
+        dotnet-runtime-6.0
+}
+_install_dnf_vscode()
+{
+    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+    sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+    sudo dnf install code -y
+    _printheader "Done: _install_dnf_vscode"
+}
 #----------------------------------------------------------------
 # Installer
 # | Apt
+#   |- _install_apt_powershell
+#   |- _install_apt_ocs
+#   |- _install_apt_dotnet
+#   |- _install_apt_vscode
 #----------------------------------------------------------------
 _install_apt() {
     sudo apt update
@@ -155,45 +197,58 @@ _install_apt_vscode()
 }
 #----------------------------------------------------------------
 # Installer
-# | Flatpak
+# |- Flatpak
+#   |- social
+#   |- media
+#   |- crypto
+#   |- util
+#   |- sdk
+#   |- other
 #----------------------------------------------------------------
 _install_flatpak() {
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+    #social
     flatpak install -y \
-        com.github.phase1geo.minder \
-        com.github.artemanufrij.regextester \
-        com.github.childishgiant.mixer \
-        com.github.debauchee.barrier \
-        com.github.iwalton3.jellyfin-media-player \
-        com.github.micahflee.torbrowser-launcher \
-        com.github.arshubham.cipher  \
-        app.drey.Warp \
         chat.revolt.RevoltDesktop \
-        com.dec05eba.gpu_screen_recorder \
         com.discordapp.Discord \
-        com.github.LongSoft.UEFITool \
-        com.vysp3r.ProtonPlus \
-        com.whitemagicsoftware.kmcaster \
-        com.yubico.yubioath \
         de.shorsh.discord-screenaudio \
-        in.cinny.Cinny \
-        io.github.arunsivaramanneo.GPUViewer \
-        im.riot.Riot \
-        im.srain.Srain \
         org.signal.Signal \
-        org.gnome.Keysign \
-        org.kde.kdenlive \
-        io.qt.Designer \
-        org.x.Warpinator \
-        tv.plex.PlexDesktop \
-        org.jdownloader.JDownloader \
-        org.gnome.baobab \
-        org.videolan.VLC \
-        org.thentrythis.Samplebrain \
-        com.authy.Authy \
-        com.github.tchx84.Flatseal \
-        md.obsidian.Obsidian
+        im.srain.Srain \
+        in.cinny.Cinny \
+        im.riot.Riot
         
+    #network
+    flatpak install -y flathub \
+        org.x.Warpinator \
+        com.github.micahflee.torbrowser-launcher \
+        app.drey.Warp \
+
+    #crypto
+    flatpak install -y flathub \
+        com.authy.Authy \
+        org.gnome.Keysign \
+        com.yubico.yubioath \
+        com.github.arshubham.cipher
+
+    #media
+    flatpak install -y flathub \
+        tv.plex.PlexDesktop \
+        org.videolan.VLC \
+        org.kde.kdenlive \
+        com.github.iwalton3.jellyfin-media-player \
+        com.github.childishgiant.mixer \
+        org.thentrythis.Samplebrain
+
+    #util
+    flapak install -y flathub \
+        com.github.tchx84.Flatseal \
+        org.gnome.baobab \
+        org.jdownloader.JDownloader \
+        com.github.artemanufrij.regextester \
+        com.github.debauchee.barrier \
+
+    #sdk
     flatpak install -y flathub \
         "org.freedesktop.Sdk.Extension.texlive//21.08" \
         "org.freedesktop.Sdk.Extension.node18//22.08" \
@@ -204,6 +259,19 @@ _install_flatpak() {
         "org.freedesktop.Sdk.Extension.dotnet7//22.08" \
         "org.freedesktop.Sdk.Extension.dotnet//20.08" \
         "org.freedesktop.Sdk.Extension.mono6//20.08"
+
+
+    #other
+    flatpak install -y \
+        com.github.phase1geo.minder \
+        com.dec05eba.gpu_screen_recorder \
+        com.github.LongSoft.UEFITool \
+        com.vysp3r.ProtonPlus \
+        com.whitemagicsoftware.kmcaster \
+        io.github.arunsivaramanneo.GPUViewer \
+        io.qt.Designer \
+        md.obsidian.Obsidian
+
     _printheader "Done: _install_flatpak"
 }
 
