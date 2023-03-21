@@ -195,15 +195,15 @@ _install_flatpak() {
         md.obsidian.Obsidian
         
     flatpak install -y flathub \
-        org.freedesktop.Sdk.Extension.texlive//21.08 \
-        org.freedesktop.Sdk.Extension.node18//22.08 \
-        org.freedesktop.Sdk.Extension.llvm15//22.08 \
-        org.freedesktop.Sdk.Extension.rust-stable//22.08 \
-        org.freedesktop.Sdk.Extension.dotnet5//21.08 \  
-        org.freedesktop.Sdk.Extension.dotnet6//22.08 \  
-        org.freedesktop.Sdk.Extension.dotnet7//22.08 \  
-        org.freedesktop.Sdk.Extension.dotnet//20.08 \
-        org.freedesktop.Sdk.Extension.mono6//20.08
+        "org.freedesktop.Sdk.Extension.texlive//21.08" \
+        "org.freedesktop.Sdk.Extension.node18//22.08" \
+        "org.freedesktop.Sdk.Extension.llvm15//22.08" \
+        "org.freedesktop.Sdk.Extension.rust-stable//22.08" \
+        "org.freedesktop.Sdk.Extension.dotnet5//21.08" \
+        "org.freedesktop.Sdk.Extension.dotnet6//22.08" \
+        "org.freedesktop.Sdk.Extension.dotnet7//22.08" \
+        "org.freedesktop.Sdk.Extension.dotnet//20.08" \
+        "org.freedesktop.Sdk.Extension.mono6//20.08"
     _printheader "Done: _install_flatpak"
 }
 
