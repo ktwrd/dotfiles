@@ -1,20 +1,35 @@
 #!/bin/bash
 
 #----------------------------------------------------------------
-# Helper Functions
+# Log Functions
 #----------------------------------------------------------------
 _printheader() {
-    printf "\u001b[47m\u001b[38;5;238m======== $1\u001b[0m\n"
+    logdate=$(date)
+    # white background
+    # black foreground
+    printf "\u001b[47m\u001b[38;5;238m[$logdate] [DBG] $1\u001b[0m\n"
 }
 _printerror() {
-    printf "\u001b[48;5;196m\u001b[30;1mERR: $1\u001b[0m\n"
+    logdate=$(date)
+    # red background
+    # black foreground
+    printf "\u001b[48;5;196m\u001b[30;1m[$logdate] [ERR] $1\u001b[0m\n" >&2
+}
+_log() {
+    logdate=$(date)
+    #black background
+    #light blue foreground
+    printf "\e[40m\e[36m[$logdate] [LOG] $1\u001b[0m\n"
 }
 
+#----------------------------------------------------------------
+# Helper Functions
+#----------------------------------------------------------------
 _getdistro() {
     local DISTROID=$(grep '^ID=' /etc/os-release | sed 's/ID\=//g')
     if [ $(echo $DISTROID | wc -m) -lt 2 ]
     then
-        echo "Unsupported Distro"
+        _printerror "Unsupported Distro"
         exit 1
     fi
     echo $DISTROID
@@ -32,12 +47,18 @@ _getpkman() {
         echo "dnf"
     fi
 }
-_install_homedir() {
+_install_home() {
     find ./linux/user_home_folder/ -type d -maxdepth 1 -regex '^\..*' -exec cp -rvf {} ~/ \;
     cd ./linux/user_home_folder
     find . -d 1 -type f -exec install -vDm 755 "{}" "$HOME" \;
     cd $SCRIPT_DIR
-    _printheader "Done: _install_homedir"
+    _install_home_config;
+    _printheader "Done: _install_home"
+}
+_install_home_config()
+{
+    git config --global credential.helper store
+    _printheader "Done: _install_home_config"
 }
 #----------------------------------------------------------------
 # Installer
@@ -193,6 +214,7 @@ _install_apt_vscode()
     sudo apt install -y apt-transport-https
     sudo apt update
     sudo apt install -y code
+    rm microsoft.gpg
     _printheader "Done: _install_apt_vscode"
 }
 #----------------------------------------------------------------
@@ -208,6 +230,7 @@ _install_apt_vscode()
 _install_flatpak() {
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+    _log "Installing flatpak->social"
     #social
     flatpak install -y \
         chat.revolt.RevoltDesktop \
@@ -218,12 +241,14 @@ _install_flatpak() {
         in.cinny.Cinny \
         im.riot.Riot
         
+    _log "Installing flatpak->network"
     #network
     flatpak install -y flathub \
         org.x.Warpinator \
         com.github.micahflee.torbrowser-launcher \
         app.drey.Warp \
 
+    _log "Installing flatpak->crypto"
     #crypto
     flatpak install -y flathub \
         com.authy.Authy \
@@ -231,6 +256,7 @@ _install_flatpak() {
         com.yubico.yubioath \
         com.github.arshubham.cipher
 
+    _log "Installing flatpak->media"
     #media
     flatpak install -y flathub \
         tv.plex.PlexDesktop \
@@ -240,6 +266,7 @@ _install_flatpak() {
         com.github.childishgiant.mixer \
         org.thentrythis.Samplebrain
 
+    _log "Installing flatpak->util"
     #util
     flapak install -y flathub \
         com.github.tchx84.Flatseal \
@@ -248,6 +275,7 @@ _install_flatpak() {
         com.github.artemanufrij.regextester \
         com.github.debauchee.barrier \
 
+    _log "Installing flatpak->sdk"
     #sdk
     flatpak install -y flathub \
         "org.freedesktop.Sdk.Extension.texlive//21.08" \
@@ -260,7 +288,7 @@ _install_flatpak() {
         "org.freedesktop.Sdk.Extension.dotnet//20.08" \
         "org.freedesktop.Sdk.Extension.mono6//20.08"
 
-
+    _log "Installing flatpak->other"
     #other
     flatpak install -y \
         com.github.phase1geo.minder \
@@ -274,6 +302,15 @@ _install_flatpak() {
 
     _printheader "Done: _install_flatpak"
 }
+_install_ohmyzsh()
+{
+    _log "Installing oh-my-zsh"
+    wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh oh-my-zsh.sh
+    chmod +x oh-my-zsh.sh
+    ./oh-my-zsh.sh --unattended
+    rm oh-my-zsh.sh
+    _printheader "Done: _install_ohmyzsh"
+}
 
 DISTRO=$(_getdistro)
 DISTROVERSION=$(_getdistroversion)
@@ -281,14 +318,15 @@ PACKAGEMAN=$(_getpkman)
 TIMESTAMP=$(date +%s)
 
 
-_printheader "Detected package manager as \"$PACKAGEMAN\""
+_log "Detected package manager as \"$PACKAGEMAN\""
 
 #----------------------------------------------------------------
 # Main
 # | Steps
 #----------------------------------------------------------------
-function step_pkg() {
+step_pkg() {
     _printheader "Running step_pkg"
+    
     if [[ $PACKAGEMAN = "apt" ]]
     then
         _install_apt
@@ -296,36 +334,50 @@ function step_pkg() {
     then
         _install_dnf
     else
-        echo "Unsupported Distro"
+        _printerror "Unsupported Distro"
+    fi
+    
+    if command -v zsh &> /dev/null
+    then
+        if [ ! -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]
+        then
+            _printheader "Installing oh-my-zsh"
+            _install_ohmyzsh;
+        else
+        
+            _printerror "oh-my-zsh is already installed"
+        fi
+    else
+        _printerror "zsh not found!!!!"s
     fi
     _printheader "Done: step_pkg"
 }
-function step_flatpak() {
+step_flatpak() {
     _printheader "Running step_flatpak"
     if command -v flatpak &> /dev/null
     then
         _install_flatpak
     else
-        echo "Flatpak not found!!"
+        _printerror "Flatpak not found!!"
         _printheader "Done: _install_flatpak"
         exit 1
     fi
     _printheader "Done: step_flatpak"
 }
-function step_home() {
+step_home() {
     _printheader "Running step_home"
-    _install_homedir
-    echo "Run \"source ~/.zshrc\" to load"
+    _install_home
+    _log "Run \"source ~/.zshrc\" to load"
     _printheader "Done: step_home"
 }
-function step_all() {
+step_all() {
     _printheader "Running step_all"
     step_pkg
     step_flatpak
     step_home
     _printheader "Done: step_all"
 }
-function step_usage() {
+step_usage() {
     _printheader "Usage"
     echo "Arguments:"
     echo "    pkg        Install system package manager packages"
@@ -361,6 +413,8 @@ then
     #   |-| _install_dnf_ocs
     # | step_flatpak
     # | step_home
+    # |-| _install_home
+    #   |-| _install_home_config
 
     step_all
 elif [[ $1 == "help" ]]
