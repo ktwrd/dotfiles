@@ -152,6 +152,7 @@ _install_apt() {
     _install_apt_ocs;
     _install_apt_dotnet;
     _install_apt_vscode;
+    _install_apt_docker;
     _printheader "Done: _install_apt"
 }
 _install_apt_ocs()
@@ -216,6 +217,41 @@ _install_apt_vscode()
     sudo apt install -y code
     rm microsoft.gpg
     _printheader "Done: _install_apt_vscode"
+}
+_install_apt_docker()
+{
+    _printheader "Installing Docker"
+    
+    # remove existing install
+    sudo apt-get remove docker docker-engine docker.io containerd runc -y
+
+    # Installing core depends
+    sudo apt-get update -y
+    sudo apt-get install -y \
+        ca-certificates \
+        curl \
+        gnupg
+
+    # Add repo key
+    sudo install -m 0755 -d /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+    # Add repo
+    echo \
+        "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+        "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+        sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+
+    sudo apt update
+    sudo apt-get install -y \
+        docker-ce \
+        docker-ce-cli \
+        containerd.io \
+        docker-buildx-plugin \
+        docker-compose-plugin
+    _printheader "Done: _install_apt_docker"
 }
 #----------------------------------------------------------------
 # Installer
