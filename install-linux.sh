@@ -84,7 +84,34 @@ _install_dnf() {
     _install_dnf_ocs;
     _install_dnf_dotnet;
     _install_dnf_vscode;
+    _install_dnf_docker;
     _printheader "Done: _install_dnf"
+}
+_install_dnf_docker() {
+    _printheader "Installing Docker"
+    
+    # remove existing install
+	sudo dnf remove -y docker \
+		docker-client \
+		docker-client-latest \
+		docker-common \
+		docker-latest \
+		docker-latest-logrotate \
+		docker-logrotate \
+		docker-selinux \
+		docker-engine-selinux \
+		docker-engine
+		
+	# add repo
+	sudo dnf -y install dnf-plugins-core
+	sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo -y
+	
+	# install docker
+	sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+	
+	# enable & start service
+	sudo systemctl enable --now docker
+    _printheader "Done: _install_dnf_docker"
 }
 _install_dnf_ocs() {
     if [ -f "ocs-url-3.1.0-1.x86_64.rpm" ]; then
@@ -100,6 +127,7 @@ _install_dnf_powershell()
     sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
     curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/microsoft.repo
     sudo dnf install powershell -y
+    _printheader "Done: _install_dnf_powershell"
 }
 _install_dnf_dotnet()
 {
@@ -341,7 +369,7 @@ _install_flatpak() {
 _install_ohmyzsh()
 {
     _log "Installing oh-my-zsh"
-    wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh oh-my-zsh.sh
+    wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O oh-my-zsh.sh
     chmod +x oh-my-zsh.sh
     ./oh-my-zsh.sh --unattended
     rm oh-my-zsh.sh
