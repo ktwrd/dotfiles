@@ -1,0 +1,253 @@
+@import "icon_size.css";
+
+#main-window:not([customizing]) #nav-bar .toolbarbutton-1[disabled=true]:-moz-any([open],[checked],:hover:active,:active) > .toolbarbutton-icon,
+#main-window:not([customizing]) #nav-bar .toolbarbutton-1[disabled=true]:-moz-any([open],[checked],:hover:active,:active) > .toolbarbutton-text,
+#main-window:not([customizing]) #nav-bar .toolbarbutton-1[disabled=true]:-moz-any([open],[checked],:hover:active,:active) > .toolbarbutton-badge-stack,
+#nav-bar toolbarbutton[type="menu-button"] .toolbarbutton-icon,
+#nav-bar .toolbarbutton-1 > .toolbarbutton-menubutton-button[open] + .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+#nav-bar .toolbarbutton-1[open] > .toolbarbutton-menubutton-button > .toolbarbutton-icon,
+#nav-bar .toolbarbutton-1[open] > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+#nav-bar .toolbarbutton-1:not([checked]):not([open]):not(:active) > .toolbarbutton-icon,
+#nav-bar .toolbarbutton-1:not([checked]):not([open]):not(:active) > .toolbarbutton-text,
+#nav-bar .toolbarbutton-1:not([checked]):not([open]):not(:active) > .toolbarbutton-badge-stack,
+#nav-bar .toolbarbutton-1:not([buttonover]):not([open]):not(:active) > .toolbarbutton-menubutton-dropmarker:not([disabled]) > .dropmarker-icon,
+#nav-bar .toolbarbutton-1:not([disabled=true]) > .toolbarbutton-menubutton-button[open] + .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+#nav-bar .toolbarbutton-1:not([disabled=true]):-moz-any(:hover,[open]) > .toolbarbutton-menubutton-button > .toolbarbutton-icon,
+#nav-bar .toolbarbutton-1:not([disabled=true]):-moz-any(:hover,[open]) > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+#nav-bar .toolbarbutton-1:not([disabled=true]):not([checked]):not([open]):not(:active):hover > .toolbarbutton-icon,
+#nav-bar .toolbarbutton-1:not([disabled=true]):not([checked]):not([open]):not(:active):hover > .toolbarbutton-text,
+#nav-bar .toolbarbutton-1:not([disabled=true]):not([checked]):not([open]):not(:active):hover > .toolbarbutton-badge-stack,
+#nav-bar .toolbarbutton-1:not([buttonover]):not([open]):not(:active):hover > .toolbarbutton-menubutton-dropmarker:not([disabled]) > .dropmarker-icon,
+#nav-bar toolbarbutton[type="menu"][open]:not([disabled]) .toolbarbutton-icon,
+#nav-bar toolbarbutton[type="menu-button"]:not([open]):hover:not([disabled]):active .toolbarbutton-icon,
+#nav-bar .toolbarbutton-1 > .toolbarbutton-menubutton-button:not([disabled=true]):-moz-any(:hover:active,:active, [open]) > .toolbarbutton-icon,
+#nav-bar .toolbarbutton-1[open] > .toolbarbutton-menubutton-dropmarker:not([disabled=true]) > .dropmarker-icon,
+#nav-bar .toolbarbutton-1:not([disabled=true]):-moz-any([open],[checked],:hover:active,:active) > .toolbarbutton-icon,
+#nav-bar .toolbarbutton-1:not([disabled=true]):-moz-any([open],[checked],:hover:active,:active) > .toolbarbutton-text,
+#nav-bar .toolbarbutton-1:not([disabled=true]):-moz-any([open],[checked],:hover:active,:active) > .toolbarbutton-badge-stack,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext:not([customizing]) #nav-bar .toolbarbutton-1[disabled=true]:-moz-any([open],[checked],:hover:active,:active) > .toolbarbutton-icon,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext:not([customizing]) #nav-bar .toolbarbutton-1[disabled=true]:-moz-any([open],[checked],:hover:active,:active) > .toolbarbutton-text,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext:not([customizing]) #nav-bar .toolbarbutton-1[disabled=true]:-moz-any([open],[checked],:hover:active,:active) > .toolbarbutton-badge-stack,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar toolbarbutton[type="menu-button"] .toolbarbutton-icon,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1 > .toolbarbutton-menubutton-button[open] + .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1[open] > .toolbarbutton-menubutton-button > .toolbarbutton-icon,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1[open] > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1:not([checked]):not([open]):not(:active) > .toolbarbutton-icon,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1:not([checked]):not([open]):not(:active) > .toolbarbutton-text,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1:not([checked]):not([open]):not(:active) > .toolbarbutton-badge-stack,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1:not([buttonover]):not([open]):not(:active) > .toolbarbutton-menubutton-dropmarker:not([disabled]) > .dropmarker-icon,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1:not([disabled=true]) > .toolbarbutton-menubutton-button[open] + .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1:not([disabled=true]):-moz-any(:hover,[open]) > .toolbarbutton-menubutton-button > .toolbarbutton-icon,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1:not([disabled=true]):-moz-any(:hover,[open]) > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1:not([disabled=true]):not([checked]):not([open]):not(:active):hover > .toolbarbutton-icon,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1:not([disabled=true]):not([checked]):not([open]):not(:active):hover > .toolbarbutton-text,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1:not([disabled=true]):not([checked]):not([open]):not(:active):hover > .toolbarbutton-badge-stack,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-brighttext #nav-bar .toolbarbutton-1:not([buttonover]):not([open]):not(:active):hover > .toolbarbutton-menubutton-dropmarker:not([disabled]) > .dropmarker-icon ,
+#main-window:not([customizing]) #toolbar-menubar .toolbarbutton-1[disabled=true]:-moz-any([open],[checked],:hover:active,:active),
+#toolbar-menubar toolbarbutton[type="menu-button"],
+#toolbar-menubar .toolbarbutton-1 > .toolbarbutton-menubutton-button[open] + .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+#toolbar-menubar .toolbarbutton-1[open] > .toolbarbutton-menubutton-button,
+#toolbar-menubar .toolbarbutton-1[open] > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+#toolbar-menubar .toolbarbutton-1:not([checked]):not([open]):not(:active),
+#toolbar-menubar .toolbarbutton-1:not([buttonover]):not([open]):not(:active) > .toolbarbutton-menubutton-dropmarker:not([disabled]) > .dropmarker-icon,
+#toolbar-menubar .toolbarbutton-1:not([disabled=true]) > .toolbarbutton-menubutton-button[open] + .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+#toolbar-menubar .toolbarbutton-1:not([disabled=true]):-moz-any(:hover,[open]) > .toolbarbutton-menubutton-button ,
+#toolbar-menubar .toolbarbutton-1:not([disabled=true]):-moz-any(:hover,[open]) > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+#toolbar-menubar .toolbarbutton-1:not([disabled=true]):not([checked]):not([open]):not(:active):hover,
+#toolbar-menubar .toolbarbutton-1:not([buttonover]):not([open]):not(:active):hover > .toolbarbutton-menubutton-dropmarker:not([disabled]) > .dropmarker-icon,
+#toolbar-menubar toolbarbutton[type="menu"][open]:not([disabled]),
+#toolbar-menubar toolbarbutton[type="menu-button"]:not([open]):hover:not([disabled]):active ,
+#toolbar-menubar .toolbarbutton-1 > .toolbarbutton-menubutton-button:not([disabled=true]):-moz-any(:hover:active,:active,[open]),
+#toolbar-menubar .toolbarbutton-1[open] > .toolbarbutton-menubutton-dropmarker:not([disabled=true]) > .dropmarker-icon,
+#toolbar-menubar .toolbarbutton-1:not([disabled=true]):-moz-any([open],[checked],:hover:active,:active),
+#TabsToolbar .toolbarbutton-1 .toolbarbutton-badge-stack,
+#TabsToolbar .toolbarbutton-1 .toolbarbutton-1 {
+	background: unset !important;
+	background-color: unset !important;
+	border-color: unset !important;
+	box-shadow: unset !important;
+	transition: unset !important;
+}
+
+toolbar:not(#TabsToolbar) .toolbarbutton-1 .toolbarbutton-badge-stack,
+toolbar:not(#TabsToolbar) toolbaritem .toolbarbutton-1,
+toolbar:not(#TabsToolbar) .toolbarbutton-1,
+toolbar:not(#TabsToolbar) .toolbarbutton-1[type="menu-button"] toolbarbutton,
+toolbar:not(#TabsToolbar) toolbaritem .toolbarbutton-1 :-moz-any(.toolbarbutton-icon, .toolbarbutton-text),
+toolbar:not(#TabsToolbar) .toolbarbutton-1 :-moz-any(.toolbarbutton-icon, .toolbarbutton-text),
+toolbar:not(#TabsToolbar) .toolbarbutton-1[type="menu-button"] toolbarbutton :-moz-any(.toolbarbutton-icon, .toolbarbutton-text){
+	background: unset !important;
+	box-shadow: unset !important;
+}
+
+#main-window[uidensity="compact"] toolbar:not(#TabsToolbar) toolbaritem .toolbarbutton-1:not([type="menu-button"]),
+#main-window[uidensity="compact"] toolbar:not(#TabsToolbar) .toolbarbutton-1:not([type="menu-button"]),
+#main-window[uidensity="compact"] toolbar:not(#TabsToolbar) .toolbarbutton-1[type="menu-button"] toolbarbutton{
+	-moz-box-orient: horizontal !important;
+}
+
+/*#main-window:not([uidensity="compact"]) toolbar:not(#TabsToolbar) toolbaritem .toolbarbutton-1:not([type="menu-button"]),
+#main-window:not([uidensity="compact"]) toolbar:not(#TabsToolbar) .toolbarbutton-1:not([type="menu-button"]),
+#main-window:not([uidensity="compact"]) toolbar:not(#TabsToolbar) .toolbarbutton-1[type="menu-button"] toolbarbutton{
+	-moz-box-orient: vertical !important;
+}*/
+
+/*
+Removed pending icon creation:
+#open-file-button
+#save-page-button
+#PanelUI-menu-button
+*/
+
+#downloads-button[animate][notification] > .toolbarbutton-badge-stack > #downloads-indicator-anchor > #downloads-indicator-icon {
+	visibility: visible !important;
+}
+
+:-moz-any(#back-button,#forward-button,#home-button,#stop-button,#reload-button,#bookmarks-menu-button,#history-panelmenu,
+	#sync-button,#feed-button,#e10s-button,#PanelUI-menu-button, #privatebrowsing-button, #preferences-button,
+	#new-window-button,#new-tab-button,#print-button,#fullscreen-button, #add-ons-button, #find-button,
+	#cut-button,#copy-button,#paste-button,#zoom-out-button,#zoom-in-button,#characterencoding-button,
+	/*#tabview-button,#email-link-button,#web-apps-button,#webide-button,*/#sidebar-button,#developer-button,#containers-panelmenu,
+	#library-button,#bookmarks-toolbar-placeholder,#nav-bar-overflow-button/*,#alltabs-button*/ ),
+#downloads-button:not([indicator="true"]),/*#panic-button:not([open]),*/
+#downloads-button .toolbarbutton-icon {
+	list-style-image: url("image/mm-toolbar.png") !important;
+}
+
+:-moz-any(#forward-button,#home-button,#stop-button,#reload-button,#bookmarks-menu-button,#history-panelmenu,
+	#characterencoding-button,#privatebrowsing-button,#find-button,#print-button,#fullscreen-button,#developer-button,
+	#preferences-button,#cut-button,#copy-button,#paste-button,#zoom-out-button,#zoom-in-button,#add-ons-button,
+	/*#tabview-button,#email-link-button,#web-apps-button,#webide-button,*/#sidebar-button,#developer-button,#containers-panelmenu,
+	#library-button,#bookmarks-toolbar-placeholder,#nav-bar-overflow-button/*,#alltabs-button*/ ) .toolbarbutton-icon {
+	padding: 0px !important;
+}
+
+#main-window #back-button .toolbarbutton-icon {
+	padding: 0px !important;
+}
+
+toolbar toolbaritem .toolbarbutton-1[disabled] .toolbarbutton-text,
+toolbar .toolbarbutton-1[disabled]:not([type="menu-button"]) .toolbarbutton-text,
+toolbar .toolbarbutton-1[type="menu-button"] toolbarbutton[disabled] .toolbarbutton-text{
+	opacity: 0.6 !important;
+}
+
+#nav-bar .toolbarbutton-1 {
+	min-height: 20px !important;
+	margin-bottom: 2px !important;
+	padding-left: 2px !important;
+	padding-right: 2px !important;
+	/*border: 1px solid transparent !important;*/
+	margin-right: 2px !important;
+} 
+
+/*#main-window:not([uidensity="compact"]) #nav-bar .toolbarbutton-1 > .toolbarbutton-text {
+	display: -moz-box !important;
+	margin-top: -5px !important;
+}*/
+
+#nav-bar .toolbarbutton-1 > .toolbarbutton-icon,
+#nav-bar .toolbarbutton-1 > .toolbarbutton-badge-stack {
+	border: none !important;
+	border-radius: 0px !important;
+	margin: 0px !important;
+}
+
+#PanelUI-button, #PanelUI-overflow-button {
+	margin: 0px !important;
+	border: none !important;
+	padding: 0px !important;
+	max-width: 20px !important;
+}
+
+#PanelUI-menu-button .toolbarbutton-badge-stack {
+	padding: 0 !important;
+}
+
+#PanelUI-menu-button .toolbarbutton-icon {
+	width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
+}
+
+.toolbarbutton-animatable-box {
+	display: none !important;
+}
+
+#TabsToolbar toolbarbutton:not([id="tabs-newtab-button"]) {
+	background: unset !important;
+	border-radius: 0 !important;
+	margin: 0px !important;
+}
+
+#TabsToolbar toolbarbutton:not([id="tabs-newtab-button"]) .toolbarbutton-1,
+#TabsToolbar toolbarbutton:not([id="tabs-newtab-button"]) .toolbarbutton-badge-stack {
+	background: unset !important;
+	border-radius: 0 !important;
+	border: none !important;
+	margin: 0px !important;
+	max-height: 22px !important;
+	max-width: 22px !important;
+}
+
+.tab-close-button,
+.tab-icon-sound {
+	margin-top: -1px !important;
+	margin-right: 0px !important;
+	padding: 1px !important;
+	max-height: 20px !important;
+	max-width: 20px !important;
+}
+
+#tabs-newtab-button {
+	list-style-image: none !important;
+}
+
+#tabs-newtab-button .toolbarbutton-icon {
+	height: 24px !important;
+	width: 24px !important;
+	padding: 3px !important;
+}
+
+/*#downloads-button:not(:-moz-any([progress],[counter],[paused],[attention])) #downloads-indicator-progress-outer,
+#downloads-button:not([counter]) > #downloads-indicator-anchor > #downloads-indicator-progress-area > #downloads-indicator-counter,
+#downloads-button:not([attention]) > #downloads-indicator-anchor > #downloads-indicator-icon {
+	background: -moz-image-rect(url("image/mm-toolbar.png"), 0, 180, 30, 150) center no-repeat !important;
+}*/
+
+/*#main-window[uidensity="compact"] #back-button {
+	padding: 0px !important;
+	margin-right: -4px !important;
+}
+
+#main-window[uidensity="compact"] #back-button .toolbarbutton-icon {
+	padding: 5px !important;
+}*/
+
+/*#main-window[uidensity="compact"] #back-button > .toolbarbutton-text,
+#main-window[uidensity="compact"] #library-button > .toolbarbutton-text,
+#main-window[uidensity="compact"] #history-panelmenu > .toolbarbutton-text {
+	display: -moz-box !important;
+	margin-left: -5px !important;
+}*/
+
+/*#main-window:not([uidensity="compact"]) #back-button .toolbarbutton-icon {
+	display: -moz-box !important;
+	margin-bottom: -3px !important;
+	margin-top: -3px !important;
+	border-radius: 0px !important;
+}*/
+
+#PlacesChevron {
+		max-height: 10px !important;
+		padding: 0px !important; 
+}
+
+toolbar:not(#TabsToolbar) #stop-button .toolbarbutton-animatable-image,
+toolbar:not(#TabsToolbar) #reload-button .toolbarbutton-animatable-image {
+	visibility: collapse !important;
+}
+
+toolbar:not(#TabsToolbar) #stop-reload-button[animate] > #reload-button > .toolbarbutton-icon,
+toolbar:not(#TabsToolbar) #stop-reload-button[animate] > #reload-button[displaystop] + #stop-button > .toolbarbutton-icon {
+	fill: unset !important;
+}
+

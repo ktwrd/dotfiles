@@ -1,0 +1,55 @@
+# Alias stuff
+function please()
+{
+    sudo $@
+}
+
+function k_updateall()
+{
+	case "$1" in
+		"")
+			echo "Updating apt (requires root)"
+			sudo apt update
+			sudo apt upgrade -y
+			echo "Updating flatpak"
+			flatpak update -y
+			echo "Done!!";;
+		"help")
+			echo "Usage:"
+			echo "    k_updateall        - Update all packages (apt, flatpak)"
+			echo "    k_updateall help   - Shows this command";;
+		*)
+			echo "unknown sub-command $1";;
+	esac
+}
+
+if [ -f "micro" ]; then
+    alias edit="micro"
+elif [ -f "nano" ]; then
+    alias edit="nano"
+elif [ -f "vim" ]; then
+    alias edit="vim"
+elif [ -f "vi" ]; then
+    alias edit="vi"
+else
+    edit ()
+    {
+        echo "No preferred editor found ;w;"
+        echo "Preferred editors;"
+        echo "micro, nano, vim, vi"
+    }
+fi
+alias apt="sudo apt"
+alias apt-get="sudo apt-get"
+alias dnf="sudo dnf"
+alias yum="sudo yum"
+alias systemctl="/usr/bin/sudo /usr/bin/systemctl"
+alias transfetch="neofetch --source ~/.local/share/neofetch/transflag --ascii_colors 4 5 15"
+alias badfetch="neofetch --source ~/.local/share/neofetch/bad-dragon"
+
+export PATH="/home/kate/.local/bin/:$PATH"
+
+function dirsize()
+{
+    du -hc --max-depth=1 $@
+}
