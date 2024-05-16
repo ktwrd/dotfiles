@@ -1,3 +1,7 @@
+export ZSH_THEME="robbyrussell"
+source $HOME/.cargo/env
+ZSH_MOMMY_AFFECTIONATE_TERM+=(vixen fox foggi girl)
+
 # Alias stuff
 function please()
 {
@@ -44,12 +48,24 @@ alias apt-get="sudo apt-get"
 alias dnf="sudo dnf"
 alias yum="sudo yum"
 alias systemctl="/usr/bin/sudo /usr/bin/systemctl"
+alias systemctl-user="/usr/bin/systemctl"
 alias transfetch="neofetch --source ~/.local/share/neofetch/transflag --ascii_colors 4 5 15"
 alias badfetch="neofetch --source ~/.local/share/neofetch/bad-dragon"
 
 export PATH="/home/kate/.local/bin/:$PATH"
 
+# Get total size of all directories provided in the parameters.
 function dirsize()
 {
-    du -hc --max-depth=1 $@
+	if [[ $# -eq 0 ]]; then
+		print 'No directory was provided. Using current directory'
+		du -hc --max-depth=1 .
+	else
+	    du -hc --max-depth=1 $@
+	fi
+}
+
+# View the documentation for the provided package.
+function rust-viewdoc() {
+    cargo doc -p $1 --open
 }
