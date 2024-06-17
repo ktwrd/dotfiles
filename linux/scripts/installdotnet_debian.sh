@@ -7,9 +7,13 @@ rm packages-microsoft-prod.deb
 /usr/bin/apt install -y \
     dotnet-sdk-6.0 \
     dotnet-sdk-7.0 \
+    dotnet-sdk-8.0 \
     dotnet-runtime-6.0 \
     dotnet-runtime-7.0 \
+    dotnet-runtime-8.0 \
     aspnetcore-runtime-6.0 \
     aspnetcore-runtime-7.0 \
+    aspnetcore-runtime-8.0 \
     aspnetcore-targeting-pack-6.0 \
     aspnetcore-targeting-pack-7.0 \
+    aspnetcore-targeting-pack-8.0 \
