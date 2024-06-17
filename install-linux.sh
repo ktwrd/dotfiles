@@ -177,30 +177,35 @@ _install_apt() {
         imwheel \
         neofetch \
         konsole \
-        yakuake \
-        vulkaninfo \
         whois \
-        strawberry \
         build-essential \
         dkms \
         linux-headers-$(uname -r) \
         joystick \
-        libboost \
-        libboost-all-dev \
-        clang \
         hugo \
         openvpn \
         micro \
         freerdp2-x11 \
         syncthing \
-        remmina
-    _install_apt_powershell;
-    _install_apt_ocs;
+        remmina \
+        rclone
+    # _install_apt_powershell;
+    # _install_apt_ocs;
     _install_apt_dotnet;
     _install_apt_vscode;
     _install_apt_docker;
+    _install_apt_gcloud_cli;
     curl -1sLf https://dl.anyware.hp.com/DeAdBCiUYInHcSTy/pcoip-client/cfg/setup/bash.deb.sh | sudo -E bash
     _printheader "Done: _install_apt"
+}
+_install_apt_gcloud_cli()
+{
+    echo Installing Google Cloud CLI
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    sudo apt update
+    sudo apt install google-cloud-cli -y
+    _printheader "Done: _install_apt_gcloud_cli"
 }
 _install_apt_ocs()
 {
