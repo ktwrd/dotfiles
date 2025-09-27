@@ -1,0 +1,88 @@
+-- Configuration settings: https://conky.cc/config_settings
+conky.config = {
+    alignment = 'bottom_right',
+    background = true,
+    border_width = 0,
+    border_inner_magin = 0,
+    border_outer_margin = 0,
+    cpu_avg_samples = 2,
+    default_color = 'white',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    double_buffer = true,
+    draw_blended = false,
+    draw_borders = false,
+    draw_graph_borders = false,
+    draw_outline = false,
+    draw_shades = false,
+    extra_newline = false,
+    font = 'JetBrains Mono NF:size=10',
+    gap_x = 50,
+    gap_y = 15,
+    minimum_height = 5,
+    minimum_width = 5,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_ncurses = false,
+    out_to_stderr = false,
+    out_to_wayland = false,
+    out_to_x = true,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_type = 'normal',
+    own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager',
+    own_window_transparent = false,
+    own_window_argb_visual = true,
+    own_window_color = '#000000',
+    own_window_argb_value = 200,
+    show_graph_range = false,
+    show_graph_scale = true,
+    stippled_borders = 0,
+    update_interval = 1,
+    uppercase = false,
+    use_spacer = 'none',
+    use_xft = true,
+    xftalpha = 0.7,
+    lua_load = '~/dotfiles/linux/conky/custom.lua',
+
+	default_color = '#fccee8', -- oklch(89.9% 0.061 343.231)
+    color1 = 'white',
+    color2 = '#fb64b6', -- oklch(71.8% 0.202 349.761)
+    color3 = '#ed6bff', -- oklch(74% 0.238 322.16)
+
+	-- oklch(65.6% 0.241 354.308)
+	-- oklch(51.8% 0.253 323.949)
+    template1 = [[ #f6339a #6f1ec0 -t -l]],
+    -- oklch(64.5% 0.246 16.439)
+    -- oklch(49.1% 0.27 292.581)
+    template2 = [[ #ff2056 #7008e7 -t -l]],
+    maximum_width = 250
+}
+
+-- Variables: https://conky.cc/variables
+conky.text = [[
+${alignc}${tztime Australia/Perth}
+${lua_parse conky_now_playing}
+${color grey}procs:$color $processes${alignr}${color grey}running:$color $running_processes
+${color grey}cpu: $color$cpu% @ ${freq_g}GHz
+${cpugraph 50,250 ${template1}}
+${color grey}mem: $color ${mem} (${memperc}%)
+${memgraph 50,250 ${template1}}
+$hr
+root ${fs_used /} (${fs_used_perc /}%)
+${diskiograph nvme1n1p2 50,250 ${template1}}
+$hr
+${color grey}dl: $color${upspeed enp90s0}
+${downspeedgraph enp90s0 50,250 ${template2}}
+${color grey}up: $color${upspeed enp90s0}
+${upspeedgraph enp90s0 50,250 ${template2}}
+$hr
+${color grey}Name                CPU%   MEM%
+${color lightgrey} ${top name 1} ${top cpu 1} ${top mem 1}
+${color lightgrey} ${top name 2} ${top cpu 2} ${top mem 2}
+${color lightgrey} ${top name 3} ${top cpu 3} ${top mem 3}
+${color lightgrey} ${top name 4} ${top cpu 4} ${top mem 4}
+$hr
+${lua_parse conky_service_statuses}
+]]

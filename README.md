@@ -1,13 +1,12 @@
-# dotfiles
+> [!NOTE]
+> very WIP dotfiles since i've only started using linux again as my main OS at home (debian 13)
 
+I also don't customize as many things as I used to, since I spend my time making stuff instead of making my Linux install look all fancy and sexy for reddit or smthn like that.
 
-## Firefox
-Chrome user theme from Modoki-Firefox ([link](https://github.com/soup-bowl/Modoki-Firefox))
+![screenshot](https://res.kate.pet/upload/AICvHeY4TjHmDLpP/20250927_17-17-14.png)
 
-- Copy over the contents of `firefox_profile/` to your profile folder, which can be found in `about:support` and under `Profile Folder` click on `Open Folder`
-- In `about:config` set the following items
-    - `toolkit.legacyUserProfileCustomizations.stylesheets = true`
-    - `browser.compactmode.show = true`
-    - `browser.toolbars.bookmarks.visibility = always`
-    - `browser.uidensity = 1`
-- Enable the `System theme - auto` theme in `about:addons`
+### Linux Requirements
+- preferably debian 13, or something using KDE Plasma 6
+- `fish` 4.x
+- `conky` 1.22 (or later)
+    - `playerctl` 2.x is required for "now playing" status
