@@ -62,7 +62,8 @@ conky.config = {
 
 -- Variables: https://conky.cc/variables
 conky.text = [[
-${alignc}${tztime Australia/Perth}
+AWST: ${alignr}${tztime Australia/Perth}
+UTC: ${alignr}${tztime UTC}
 ${lua_parse conky_now_playing}
 ${color grey}procs:$color $processes${alignr}${color grey}running:$color $running_processes
 ${color grey}cpu: $color$cpu% @ ${freq_g}GHz
