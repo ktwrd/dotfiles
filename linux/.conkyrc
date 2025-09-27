@@ -1,6 +1,6 @@
 -- Configuration settings: https://conky.cc/config_settings
 conky.config = {
-    alignment = 'bottom_right',
+    alignment = 'top_right',
     background = true,
     border_width = 0,
     border_inner_magin = 0,
