@@ -10,3 +10,4 @@ I also don't customize as many things as I used to, since I spend my time making
 - `fish` 4.x
 - `conky` 1.22 (or later)
     - `playerctl` 2.x is required for "now playing" status
+    - `JetBrains Mono` [Nerd Font](https://www.nerdfonts.com/font-downloads) is required :3
