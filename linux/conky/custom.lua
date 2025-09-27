@@ -48,18 +48,20 @@ function conky_service_statuses()
 		end
 		
 		svc_value = svc_value..status
-		display_data[svc_pfx] = svc_value
+		display_data[services[i]] = {
+			svc_pfx,
+			svc_value
+		}
 	end
 	
-	local i = 1
 	local result = ""
-	for key, value in pairs(display_data) do
-		local item = "${color white}"..string.format("%"..(max_pfx_len).."s", key)..": "..value
+	for i = 1, #services do
+		local value = display_data[services[i]]
+		local item = "${color white}"..string.format("%"..(max_pfx_len).."s", value[1])..": "..value[2]
 		if i < #services then
 			item = item.."\n"
 		end
 		result = result..item
-		i = i + 1
 	end
 	return result
 end
