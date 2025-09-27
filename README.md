@@ -3,7 +3,7 @@
 
 I also don't customize as many things as I used to, since I spend my time making stuff instead of making my Linux install look all fancy and sexy for reddit or smthn like that.
 
-![screenshot](https://res.kate.pet/upload/AICvHeY4TjHmDLpP/20250927_17-17-14.png)
+![screenshot](https://res.kate.pet/upload/woRZXIfz4X0wD16G/20250927_17-17-27.png)
 
 ### Linux Requirements
 - preferably debian 13, or something using KDE Plasma 6
