@@ -14,12 +14,18 @@ function backup_thingy() {
     fi
 }
 
+function copy_item() {
+    if [ -L "$2" ]; then
+        /bin/rm $2
+    fi
+    /bin/cp $1 $2
+}
+
 backup_thingy ~/.conkyrc ./.conkyrc
-backup_thingy ~/.config/fish/conf.d/config.fish ./config.fish
+backup_thingy ~/.config/fish/config.fish ./config.fish
 backup_thingy ~/.config/fish/conf.d/fish_prompt.fish ./fish_prompt.fish
 
 
-ln -sf ./.conkyrc ~/.conkyrc
-ln -sf ./config.fish ~/.config/fish/conf.d/config.fish
-ln -sf ./fish_prompt.fish ~/.config/fish/conf.d/fish_prompt.fish
-
+copy_item ./.conkyrc ~/.conkyrc
+copy_item ./config.fish ~/.config/fish/config.fish
+copy_item ./fish_prompt.fish ~/.config/fish/conf.d/fish_prompt.fish
