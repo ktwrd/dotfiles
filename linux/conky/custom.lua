@@ -7,7 +7,7 @@ local services = {
 }
 
 local services_rename = {
-	["docker.service"] = "docker",
+ 	["docker.service"] = "docker",
 	["syncthing@kate"] = "syncthing",
 	["clamav-daemon.service"] = "clamav-daemon"
 }
@@ -16,8 +16,11 @@ local service_status_colors = {
 	["inactive (dead)"] = "white"
 }
 
+local network_interfaces = {
+	'wlp1s0'
+}
+
 local kate_cfg = {
-	['network_interface'] = "enp90s0",
 	-- ordered from most important (picked first) to least important
 	['audio_players'] = {
 		"strawberry"
@@ -25,6 +28,20 @@ local kate_cfg = {
 	['audio_interval'] = 0.5,
 	['now_playing_emoji'] = true
 }
+function conky_network_speed()
+	local nw_sb = ''
+	for i = 1, #network_interfaces do
+		local interface_value = network_interfaces[i]
+		-- nw_sb = nw_sb..string.format("${color grey} % dl: $color${upspeed %}\n", interface_value, interface_value)
+
+		nw_sb = nw_sb..'${alignc}'..interface_value..'\n'
+		nw_sb = nw_sb..'${color grey}dl: $color${upspeed '..interface_value..'}\n'
+		nw_sb = nw_sb..'${downspeedgraph '..interface_value..' 50,250 ${template2}}\n'
+		nw_sb = nw_sb..'${color grey}up: $color${upspeed '..interface_value..'}\n'
+		nw_sb = nw_sb..'${upspeedgraph '..interface_value..' 50,250 ${template2}}\n'..'${hr}\n'
+	end
+	return nw_sb
+end
 
 function conky_service_statuses()
 	local display_data = {}
@@ -138,6 +155,6 @@ function conky_now_playing()
 	if album ~= invalid_value then
 		result = result.."${color}${alignc}"..album.."\n"
 	end
-	result = result.."${alignc}"..pos.." ${lua_bar 10,160 conky_track_progress} "..len.."\n"
+	result = result.."${alignc}"..pos.." ${lua_bar 10,200 conky_track_progress} "..len.."\n"
 	return result.."$hr"
 end
