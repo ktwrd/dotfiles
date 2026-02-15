@@ -23,3 +23,6 @@ set --export SENTRY_URL "https://sentry.kate.pet"
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# local bin
+set --export PATH $HOME/.local/bin $PATH
