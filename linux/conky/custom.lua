@@ -3,7 +3,9 @@ local services = {
 	"nginx",
 	"php8.4-fpm",
 	"syncthing@kate",
-	"clamav-daemon.service"
+	"clamav-daemon.service",
+	"cloudflared",
+	"firewalld",
 }
 
 local services_rename = {
