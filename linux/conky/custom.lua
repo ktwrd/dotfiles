@@ -7,6 +7,9 @@ local services = {
 	"cloudflared",
 	"firewalld",
 }
+local local_services = {
+	"vicinae"
+}
 
 local services_rename = {
  	["docker.service"] = "docker",
@@ -19,7 +22,9 @@ local service_status_colors = {
 }
 
 local network_interfaces = {
-	'wlp1s0'
+	-- 'wlp1s0'
+	'enp90s0',
+	'wlp89s0'
 }
 
 local kate_cfg = {
@@ -72,12 +77,42 @@ function conky_service_statuses()
 			svc_value
 		}
 	end
+	for i = 1, #local_services do
+		local status = conky_parse("${execi 8 ~/dotfiles/linux/conky/service-status-usr.sh "..local_services[i].."}")
+		local svc_pfx = local_services[i]
+		if services_rename[local_services[i]] ~= nil then
+			svc_pfx = services_rename[local_services[i]]
+		end
+		if max_pfx_len < #svc_pfx then
+			max_pfx_len = #svc_pfx
+		end
+		local svc_value = "${color white}"
+		if service_status_colors[status] ~= nil then
+			svc_value = "${color "..service_status_colors[status].."}"
+		end
+		svc_value = svc_value..status
+		display_data[local_services[i]] = {
+			svc_pfx,
+			svc_value
+		}
+	end
 	
 	local result = ""
 	for i = 1, #services do
 		local value = display_data[services[i]]
 		local item = "${color white}"..string.format("%"..(max_pfx_len).."s", value[1])..": "..value[2]
 		if i < #services then
+			item = item.."\n"
+		end
+		result = result..item
+	end
+	if 0 < #local_services then
+		result = result.."\n"
+	end
+	for i = 1, #local_services do
+		local value = display_data[local_services[i]]
+		local item = "${color white}"..string.format("%"..(max_pfx_len).."s", value[1])..": "..value[2]
+		if i < #local_services then
 			item = item.."\n"
 		end
 		result = result..item
