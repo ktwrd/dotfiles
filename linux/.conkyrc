@@ -57,7 +57,7 @@ conky.config = {
     -- oklch(64.5% 0.246 16.439)
     -- oklch(49.1% 0.27 292.581)
     template2 = [[ #ff2056 #7008e7 -t -l]],
-    maximum_width = 250
+    maximum_width = 300
 }
 
 -- Variables: https://conky.cc/variables
